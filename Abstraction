@@ -1,0 +1,74 @@
+abstract class Employee {
+    abstract void calculate_salary();
+
+    public void details() {
+        System.out.println("Salary Details");
+    }
+}
+
+// Full-Time Employee Class
+class FullTimeEmployee extends Employee {
+    @Override
+    void calculate_salary() {
+        int sal = 50000;
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("Enter your Employee ID: ");
+        while (!scan.hasNextInt()) {  // Validate integer input
+            System.out.println("Invalid ID! Please enter a valid number:");
+            scan.next();  // Consume invalid input
+        }
+        int id = scan.nextInt();
+        scan.nextLine(); // Consume newline after nextInt()
+
+        System.out.print("Enter your Name: ");
+        String name = scan.nextLine();
+
+        if (name.equalsIgnoreCase("Ramya")) {
+            System.out.println(name + " " + id + " " + sal);
+        } else {
+            System.out.println(name + " " + id + " " + sal);
+        }
+    }
+}
+
+// Part-Time Employee Class
+class PartTimeEmployee extends Employee {
+    @Override
+    void calculate_salary() {
+        int sal = 10000;
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("Enter your Employee ID: ");
+        while (!scan.hasNextInt()) {
+            System.out.println("Invalid ID! Please enter a valid number:");
+            scan.next();
+        }
+        int id = scan.nextInt();
+        scan.nextLine(); // Consume newline
+
+        System.out.print("Enter your Name: ");
+        String name = scan.nextLine();
+
+        if (name.equalsIgnoreCase("Sharmi")) {
+            System.out.println(name + " " + id + " " + sal);
+        } else {
+            System.out.println(name + " " + id + " " + sal);
+        }
+    }
+}
+
+// Main Class
+public class Main {
+    public static void main(String args[]) {
+        Scanner scan = new Scanner(System.in);
+
+        Employee full = new FullTimeEmployee();
+        Employee part = new PartTimeEmployee();
+
+        full.calculate_salary();
+        part.calculate_salary();
+
+        scan.close(); // Close scanner to prevent resource leak
+    }
+}
